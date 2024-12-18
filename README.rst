@@ -32,6 +32,11 @@ pyuv's features:
 - Arbitrary file descriptor polling
 - Thread synchronization primitives
 
+This fork
+=========
+
+This fork includes very minor and minimal updates so ``pyuv`` 
+can be used with newer releases of Python 3, including 3.11. 
 
 CI status
 =========
@@ -73,6 +78,8 @@ pyuv can be installed via pip as follows:
     pip install pyuv
 
 
+It can also be installed from a local build, as shown in the next section for Linux.
+
 Building
 ========
 
@@ -88,6 +95,7 @@ Linux:
 ::
 
     ./build_inplace
+    pip install -e .
 
 Mac OSX:
 
@@ -107,11 +115,12 @@ Microsoft Windows (with Visual Studio):
 Running the test suite
 ======================
 
-There are several ways of running the test ruite:
+There are several ways of running the test suite:
 
 - Run the test with the current Python interpreter:
 
   From the toplevel directory, run: ``nosetests -v``
+  (Debian/Ubuntu nose can be installed with ``sudo apt install python3-nose``)
 
 - Use Tox to run the test suite in several virtualenvs with several interpreters
 
