@@ -39,7 +39,11 @@ pyuv_PyUnicode_EncodeFSDefault(PyObject *unicode)
         return PyUnicode_AsEncodedString(unicode, Py_FileSystemDefaultEncoding, "surrogateescape");
     else
 #endif
-        return PyUnicode_EncodeUTF8(PyUnicode_AS_UNICODE(unicode), PyUnicode_GET_SIZE(unicode), "surrogateescape");
+#if PY_MAJOR_VERSION * 100 + PY_MINOR_VERSION >= 311
+        return PyUnicode_AsUTF8String(unicode);
+#else	    
+	return PyUnicode_EncodeUTF8(PyUnicode_AS_UNICODE(unicode), PyUnicode_GET_SIZE(unicode), "surrogateescape");
+#endif
 }
 
 
